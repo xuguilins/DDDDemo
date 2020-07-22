@@ -10,10 +10,12 @@ namespace DL.Core.Domain.CommandBus
     public class CommandExecutor : ICommandExecutor
     {
         private readonly IMediator _mediator;
-        public CommandExecutor(IMediator  mediator)
+
+        public CommandExecutor(IMediator mediator)
         {
             _mediator = mediator;
         }
+
         public T Execute<T>(Command<T> command)
         {
             command.Validate();

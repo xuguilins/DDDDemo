@@ -15,6 +15,9 @@ using DL.Core.Domain.CommandHandler;
 using DL.Core.Infrastructure;
 using MediatR;
 using DL.Core.Domain.Commands.DomainCommands;
+using DL.Core.Domain.EventBus;
+using DL.Core.Domain.EventBusData;
+using DL.Core.Domain.EventBusHanldler;
 
 namespace DL.Core.WebUI
 {
@@ -34,6 +37,12 @@ namespace DL.Core.WebUI
             services.AddScoped<IStudentApplicationService, StudentApplicationSerivce>();
             services.AddScoped<IRequestHandler<StudentResgistCommand, string>, StudentCommandHandler>();
             services.AddScoped<ICommandExecutor, CommandExecutor>();
+
+            ///ÊÂ¼þ
+            ///
+            services.AddScoped<IEventHandler, DL.Core.Domain.EventBus.EventHandler>();
+            services.AddScoped<INotificationHandler<StudentEvent>, StudentEventHandler>();
+
             services.AddControllers();
         }
 

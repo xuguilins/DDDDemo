@@ -10,6 +10,12 @@ namespace DL.Core.Domain.CommandBus
     /// </summary>
     public interface ICommandExecutor
     {
+        /// <summary>
+        /// 执行命令
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="command"></param>
+        /// <returns></returns>
 
         T Execute<T>(Command<T> command);
     }
